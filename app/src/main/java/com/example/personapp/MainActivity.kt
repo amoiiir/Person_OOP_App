@@ -1,5 +1,6 @@
 package com.example.personapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -27,7 +28,14 @@ class MainActivity : AppCompatActivity() {
         person.displayName = findViewById(R.id.displayName)
 
         person.btnSubmit.setOnClickListener{
+
+            //pass the value to the next page
+            val intent = Intent(this,displayDetails::class.java)
+
+            //convert the input value toString()
             val message = person.userName.text.toString()
+
+            intent.putExtra("NAME", message)
             person.displayName.text = "Hello, $message !"
 //            Toast.makeText(this,"Your name is $message",Toast.LENGTH_LONG).show()
         }
